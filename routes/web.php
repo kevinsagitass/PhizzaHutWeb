@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
+Route::get('/Login', function () {
     return view('login');
 });
+
+Route::get('/Register', function () {
+    return view('register');
+});
+
+Route::post('/Register', 'RegisterController@register');
