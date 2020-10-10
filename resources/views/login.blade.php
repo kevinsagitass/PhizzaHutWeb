@@ -1,18 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-</head>
-<body>
+@extends('MasterView.app')
+
+@section('title', 'Login Page')
+
+@section('content')
     <div class="row">
-        <div class=col-md-12>
-            <p style="width: 100%">test</p>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <form action="/Login" method="POST">
+                {{ csrf_field() }}
+                @if(Session::has('error') && Session::get('error') == 'user')
+                    <span class="text-danger">{{ Session::get('msg') }}</span>
+                @endif
+                <div class="form-group">
+                    <div>
+                        <label for="username">Email : </label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                    </div>
+                </div>
+                @if(Session::has('error') && Session::get('error') == 'email')
+                    <span class="text-danger">{{ Session::get('msg') }}</span>
+                @endif
+                <br>
+                <div class="form-group">
+                    <div>
+                        <label for="username">Password : </label>
+                        <input type="pass" class="form-control" id="password" name="password" value="{{ old('password') }}">
+                    </div>
+                </div>
+                @if(Session::has('error') && Session::get('error') == 'password')
+                    <span class="text-danger">{{ Session::get('msg') }}</span>
+                @endif
+                <br>
+                <div class="form-group">
+                <input type="checkbox" name="remember" value="{{true}}" value="{{ old('remember') }}">Remember Me
+                 </div>
+                <div class="form-group">
+                    <button style="cursor: pointer" type="submit" class="btn btn-primary">Login</button>
+                 </div>
+            </form>
+        </div>
+        <div class="col-md-3">
         </div>
     </div>
-</body>
-</html>
+@endsection

@@ -24,7 +24,7 @@ class RegisterController extends Controller
             if($response != 'success') {
                 return redirect()->back()->with($response)->withInput();
             } else {
-                
+                return view('Login');
             }
 
         } catch (Exception $e) {

@@ -16,6 +16,22 @@ class RegisterRepositoryEloquent
     {
         try {
             $result = $this->validate($data);
+
+            if($result == 'success') {
+                $user = new MsUser();
+
+                $user->username = $data['username'];
+                $user->email = $data['email'];
+                $user->pass = $data['password'];
+                $user->confirm_pass = $data['confirm_password'];
+                $user->address = $data['address'];
+                $user->phone_number = $data['phone_number'];
+                $user->gender = $data['gender'];
+                $user->role_id = 2;
+            
+                $user->save();
+            }
+
         } catch (Exception $e) {
             throw $e;
         }
@@ -66,18 +82,7 @@ class RegisterRepositoryEloquent
                 return ['error' => 'phone_number', 'msg' => 'Phone Number Must be Numeric'];
             }
 
-            $user = new MsUser();
-
-
-            $user->username = $data['username'];
-            $user->email = $data['email'];
-            $user->pass = $data['password'];
-            $user->confirm_pass = $data['confirm_password'];
-            $user->address = $data['address'];
-            $user->phone_number = $data['phone_number'];
-            $user->gender = $data['gender'];
-        
-            $user->save();
+            return 'success';
 
         } catch (Exception $e) {
             throw $e;
