@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <div>
                         <label for="username">Password : </label>
-                        <input type="pass" class="form-control" id="password" name="password" value="{{ old('password') }}">
+                        <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}">
                     </div>
                 </div>
                 @if(Session::has('error') && Session::get('error') == 'password')

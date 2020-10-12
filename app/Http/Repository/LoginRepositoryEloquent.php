@@ -5,6 +5,8 @@ namespace App\Http\Repository;
 use App\Models\MsUser;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Cookie;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class LoginRepositoryEloquent
@@ -22,11 +24,18 @@ class LoginRepositoryEloquent
 
                 $user = MsUser::query()
                 ->where('email', 'like', '%'.$data['email'].'%')
-                ->where('pass', '=', $data['password'])
                 ->first();
 
                 if ($user != null) {
-                    return $result;
+                    $userdata = array(
+                        'email'     => $data['email'],
+                        'password'  => $data['password']
+                    );
+                    if (Auth::attempt($userdata)) {
+                        return $result;
+                    } else {
+                        return ['error' => 'user', 'msg' => 'User Doesn\'t Exists'];    
+                    }
                 } else {
                     return ['error' => 'user', 'msg' => 'User Doesn\'t Exists'];
                 }

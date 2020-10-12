@@ -24,6 +24,7 @@ class CreateMsUser extends Migration
             $table->string('gender')->nullable(false);
             $table->integer('role_id')->unsigned();
             $table->foreign('role_id')->references('role_id')->on('ms_roles');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

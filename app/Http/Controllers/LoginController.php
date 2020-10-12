@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Repository\LoginRepositoryEloquent;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,9 +27,9 @@ class LoginController extends Controller
             } else {
                 if (isset($data['remember'])) {
                     $emailCookie = cookie('email', $data['email'], 120);
-                    return redirect('Home')->withCookie($emailCookie);
+                    return redirect('Home')->withCookie($emailCookie)->with(['user' => Auth::user()]);
                 }
-                return redirect('Home');
+                return redirect('Home')->with(['user' => Auth::user()]);
             }
 
         } catch (Exception $e) {

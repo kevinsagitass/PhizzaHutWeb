@@ -4,6 +4,7 @@ namespace App\Http\Repository;
 
 use App\Models\MsUser;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class RegisterRepositoryEloquent
@@ -22,8 +23,8 @@ class RegisterRepositoryEloquent
 
                 $user->username = $data['username'];
                 $user->email = $data['email'];
-                $user->pass = $data['password'];
-                $user->confirm_pass = $data['confirm_password'];
+                $user->pass = Hash::make($data['password']);
+                $user->confirm_pass = Hash::make($data['confirm_password']);
                 $user->address = $data['address'];
                 $user->phone_number = $data['phone_number'];
                 $user->gender = $data['gender'];

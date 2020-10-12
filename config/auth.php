@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'ms_user',
     ],
 
     /*
@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'ms_user',
         ],
 
         'api' => [
@@ -66,9 +66,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'ms_user' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\MsUser::class,
         ],
 
         // 'users' => [
@@ -93,6 +93,12 @@ return [
     */
 
     'passwords' => [
+        'ms_user' => [
+            'provider' => 'ms_user',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
