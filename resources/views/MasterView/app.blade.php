@@ -18,7 +18,12 @@
                         <h3>Phizza Hut</h3>
                     </div>
                     <div class="col-md-3">
-                        <span style="border-right: 1px solid black"><a style="padding: 5px" href="Login">Login</a></span><a style="padding: 5px" href="Register">Register</a>
+                        @if(!isset($user))
+                            <span style="border-right: 1px solid black"><a style="padding: 5px" href="Login">Login</a></span>
+                            <a style="padding: 5px" href="Register">Register</a>
+                        @elseif(isset($user) && $user != null)
+                            <span><a style="padding: 5px" href="Logout">Logout</a></span>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -36,4 +36,14 @@ class LoginController extends Controller
             throw $e;
         }
     }
+
+    public function logout()
+    {
+        try {
+            Auth::logout();
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return redirect('Home');
+    }
 }

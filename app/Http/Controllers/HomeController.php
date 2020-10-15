@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     protected $homeRepository;
-    protected $user;
+    protected $user = null;
 
     public function __construct(HomeRepositoryEloquent $homeRepository)
     {
@@ -25,9 +25,13 @@ class HomeController extends Controller
     public function dashboard(Request $request)
     {
         try {
-            if ($this->user == null) {
-                // get user abbilities
+            $userAbility = [];
+            if ($this->user != null) {
+             // get user abbilities
+             $userAbility = $this->homeRepository->getUserAbility($this->user);
             }
+
+            return view('home', ['user' => $this->user, 'userAbility' => $userAbility]);
         } catch (Exception $e) {
             throw $e;
         }

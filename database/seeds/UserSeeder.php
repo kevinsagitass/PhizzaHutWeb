@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class UserSeeder extends Seeder
             [
                 'username' => 'Admin',
                 'email' => 'admin@gmail.com',
-                'pass' => 'admin1',
+                'pass' => Hash::make('admin1'),
                 'confirm_pass' => 'admin1',
                 'address' => 'admin1 Address',
                 'phone_number' => '08128871927',

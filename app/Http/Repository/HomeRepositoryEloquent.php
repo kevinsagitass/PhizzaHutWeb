@@ -13,7 +13,23 @@ use Symfony\Component\HttpFoundation\Cookie;
  */
 class HomeRepositoryEloquent
 {
-    
+    public function getUserAbility($user)
+    {
+        try {
+            $userAbility = DB::table('tr_user_ability')
+            ->select('task')
+            ->where('role_id', '=', $user['role_id'])
+            ->get()->toArray();
+
+            $userAbilityArr = [];
+            foreach ($userAbility as $ability) {
+                $userAbilityArr[] = $ability->task;
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $userAbilityArr;
+    }
 }
 
 ?>

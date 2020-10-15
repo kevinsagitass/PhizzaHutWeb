@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Route::get('/Login', function () {
     return view('login');
 });
 
-Route::group(['middleware' => ['web']], function () {
+Route::get('/Logout', 'LoginController@logout');
 
-    Route::get('/Home', 'HomeController@dashboard');
+Route::get('/', 'HomeController@dashboard');
+
+Route::get('/Home', 'HomeController@dashboard');
+
+Route::group(['middleware' => ['web']], function () {
 
     Route::get('/Register', function () {
         return view('register');
