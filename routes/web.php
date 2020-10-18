@@ -24,6 +24,7 @@ Route::get('/Register', function () {
 });
 
 Route::post('/Register', 'RegisterController@register');
+Route::post('/Login', 'LoginController@login');
 
 Route::group(['middleware' => ['auth']], function () {
     
@@ -33,12 +34,13 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::get('/Home', 'HomeController@dashboard');
 
-<<<<<<< Updated upstream
+
     Route::get('/AllUser', 'AdminController@viewAllUser');
-=======
-    Route::post('/Login', 'LoginController@login');
 
-    
 
->>>>>>> Stashed changes
+    Route::post('/AddPhizza','PhizzaController@add');
+    Route::get('/AddPhizza',function(){
+        return view('addphizza');
+    });
+
 });
