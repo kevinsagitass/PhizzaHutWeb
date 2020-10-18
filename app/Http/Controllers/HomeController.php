@@ -16,7 +16,7 @@ class HomeController extends Controller
         $this->homeRepository = $homeRepository;
         $this->middleware(function ($request, $next) {
 
-            $this->user = session()->get('user');
+            $this->user = Auth::user();
 
             return $next($request);
         });
@@ -31,7 +31,7 @@ class HomeController extends Controller
              $userAbility = $this->homeRepository->getUserAbility($this->user);
             }
 
-            return view('home', ['user' => $this->user, 'userAbility' => $userAbility]);
+            return view('home');
         } catch (Exception $e) {
             throw $e;
         }

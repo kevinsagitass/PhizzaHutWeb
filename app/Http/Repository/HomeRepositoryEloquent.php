@@ -25,6 +25,8 @@ class HomeRepositoryEloquent
             foreach ($userAbility as $ability) {
                 $userAbilityArr[] = $ability->task;
             }
+
+            session()->put('ability', $userAbilityArr);
         } catch (Exception $e) {
             throw $e;
         }

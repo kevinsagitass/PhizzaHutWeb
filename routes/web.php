@@ -15,21 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/Login', function () {
     return view('login');
+})->name('login');
+
+Route::post('/Login', 'LoginController@login');
+
+Route::get('/Register', function () {
+    return view('register');
 });
 
-Route::get('/Logout', 'LoginController@logout');
+Route::post('/Register', 'RegisterController@register');
 
-Route::get('/', 'HomeController@dashboard');
+Route::group(['middleware' => ['auth']], function () {
+    
+    Route::get('/Logout', 'LoginController@logout');
+    
+    Route::get('/', 'HomeController@dashboard');
+    
+    Route::get('/Home', 'HomeController@dashboard');
 
-Route::get('/Home', 'HomeController@dashboard');
-
-Route::group(['middleware' => ['web']], function () {
-
-    Route::get('/Register', function () {
-        return view('register');
-    });
-
-    Route::post('/Register', 'RegisterController@register');
-
-    Route::post('/Login', 'LoginController@login');
+    Route::get('/AllUser', 'AdminController@viewAllUser');
 });

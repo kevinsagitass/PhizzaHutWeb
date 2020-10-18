@@ -27,9 +27,9 @@ class LoginController extends Controller
             } else {
                 if (isset($data['remember'])) {
                     $emailCookie = cookie('email', $data['email'], 120);
-                    return redirect('Home')->withCookie($emailCookie)->with(['user' => Auth::user()]);
+                    return redirect('Home')->withCookie($emailCookie);
                 }
-                return redirect('Home')->with(['user' => Auth::user()]);
+                return redirect('Home');
             }
 
         } catch (Exception $e) {

@@ -9,4 +9,6 @@ use Illuminate\Notifications\Notifiable;
 class User
 {
    public $user;
+
+   protected $primaryKey = 'user_id';
 }

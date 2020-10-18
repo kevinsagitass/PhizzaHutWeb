@@ -14,8 +14,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Msuser extends Authenticatable
 {
     protected $table      = "ms_user";
-    protected $primaryKey = "id";
-
+    protected $primaryKey = "user_id";
+    
     protected $fillable = array(
         'username',
         'email',

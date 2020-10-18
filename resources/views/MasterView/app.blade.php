@@ -18,10 +18,13 @@
                         <h3>Phizza Hut</h3>
                     </div>
                     <div class="col-md-3">
-                        @if(!isset($user))
+                        @if(!Auth::check())
                             <span style="border-right: 1px solid black"><a style="padding: 5px" href="Login">Login</a></span>
                             <a style="padding: 5px" href="Register">Register</a>
-                        @elseif(isset($user) && $user != null)
+                        @elseif(Auth::check() && Auth::user() != null)
+                            @if(array_keys(session()->get('ability'), "VIEW_ALL_USER"))
+                                <span style="border-right: 1px solid black"><a style="padding: 5px" href="AllUser">View All User</a></span>
+                            @endif
                             <span><a style="padding: 5px" href="Logout">Logout</a></span>
                         @endif
                     </div>
