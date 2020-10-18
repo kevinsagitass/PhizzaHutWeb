@@ -33,5 +33,12 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::get('/Home', 'HomeController@dashboard');
 
+<<<<<<< Updated upstream
     Route::get('/AllUser', 'AdminController@viewAllUser');
+=======
+    Route::post('/Login', 'LoginController@login');
+
+    
+
+>>>>>>> Stashed changes
 });
