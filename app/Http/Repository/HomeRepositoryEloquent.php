@@ -32,6 +32,16 @@ class HomeRepositoryEloquent
         }
         return $userAbilityArr;
     }
+
+    public function getPhizzas() 
+    {
+        try {
+            $phizzas = DB::table('phizza')->paginate(6);
+        } catch (Exception $e) {
+            throw $e;
+        }
+        return $phizzas;
+    }
 }
 
 ?>

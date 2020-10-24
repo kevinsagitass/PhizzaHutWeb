@@ -29,9 +29,12 @@ class HomeController extends Controller
             if ($this->user != null) {
              // get user abbilities
              $userAbility = $this->homeRepository->getUserAbility($this->user);
+
+             $phizzas = $this->homeRepository->getPhizzas();
+             
             }
 
-            return view('home');
+            return view('home')->with(['phizzas' => $phizzas]);
         } catch (Exception $e) {
             throw $e;
         }

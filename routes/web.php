@@ -27,20 +27,20 @@ Route::post('/Register', 'RegisterController@register');
 Route::post('/Login', 'LoginController@login');
 
 Route::group(['middleware' => ['auth']], function () {
+
+    Route::get('/Home', 'HomeController@dashboard');
     
     Route::get('/Logout', 'LoginController@logout');
     
     Route::get('/', 'HomeController@dashboard');
-    
-    Route::get('/Home', 'HomeController@dashboard');
 
 
     Route::get('/AllUser', 'AdminController@viewAllUser');
 
 
     Route::post('/AddPhizza','PhizzaController@add');
-    Route::get('/AddPhizza',function(){
+    Route::get('/AddPhizza',[function(){
         return view('addphizza');
-    });
+    }, 'as' => 'add.phizza.form'])->name('addPhizzaForm');
 
 });
