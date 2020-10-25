@@ -29,9 +29,9 @@ Route::post('/Login', 'LoginController@login');
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/Home', 'HomeController@dashboard');
-    
+
     Route::get('/Logout', 'LoginController@logout');
-    
+
     Route::get('/', 'HomeController@dashboard');
 
 
@@ -42,5 +42,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/AddPhizza',[function(){
         return view('addphizza');
     }, 'as' => 'add.phizza.form'])->name('addPhizzaForm');
+
+    Route::get('/UpdatePhizza/{phizza_id}','PhizzaController@viewupdate');
+    Route::post('/UpdatePhizza/{phizza_id}', 'PhizzaController@update');
 
 });

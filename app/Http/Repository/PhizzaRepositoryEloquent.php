@@ -34,6 +34,37 @@ class PhizzaRepositoryEloquent
         return ['status' => $result, 'new_name' => $new_name];
     }
 
+    public function getPhizza($id)
+    {
+        $phizza = Phizza::query()
+            ->where('phizza_id','=',$id)
+        ->first();
+        return $phizza;
+    }
+
+    public function update($data)
+    {
+        try{
+            $result = $this->validate($data);
+            $new_name=null;
+            if($result == 'success')
+            {
+                $phizza = $this->getPhizza($data['idPhizza']);
+//                dd($phizza);
+                $phizza->phizza_id =  $data['idPhizza'];
+                $phizza->phizza_name = $data['phizza_name'];
+                $phizza->desc = $data['desc'];
+                $phizza->price = $data['price'];
+                $phizza->image = rand().'.'.$data['image']->getClientOriginalExtension();;
+                $new_name = $phizza->image;
+                $phizza->save();
+            }
+        }catch(Exception $e){
+            throw e;
+        }
+        return ['status' => $result, 'new_name' => $new_name];
+    }
+
     private function validate($data)
     {
         try {
@@ -45,7 +76,7 @@ class PhizzaRepositoryEloquent
                 return ['error' => 'desc', 'msg' => 'Description Cannot be Empty'];
             } else if (!isset($data['image'])) {
                 return ['error' => 'image', 'msg' => 'No File Chosen'];
-            } 
+            }
             if(strlen($data['phizza_name'] > 20)){
                 return['error' => 'phizza_name', 'msg' =>'Pizza Mames Must be Between 1-20 Character(s)'];
             }
@@ -62,7 +93,7 @@ class PhizzaRepositoryEloquent
             }
 
 
-            if(pathinfo($data['image']->getClientOriginalName())['extension'] != 'jpg'){
+            if(pathinfo($data['image']->getClientOriginalName())['extension'] != 'jpg' && pathinfo($data['image']->getClientOriginalName())['extension'] != 'png'){
                 return ['error' => 'image', 'msg' => 'The Uploaded File wass Not Image'];
             }
 

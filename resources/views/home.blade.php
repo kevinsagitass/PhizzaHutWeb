@@ -15,7 +15,7 @@
                 <h3>Order it Now</h3>
             </div>
         </div>
-        @if(array_keys(session()->get('ability'), "ADD_PIZZA")) 
+        @if(array_keys(session()->get('ability'), "ADD_PIZZA"))
             <div class="row">
                 <div class="col-md-3">
                 <button type="button" onclick='window.location="{{url("/AddPhizza")}}"'>Add Phizza</button>
@@ -45,7 +45,7 @@
                                     @if(array_keys(session()->get('ability'), "EDIT_PIZZA") && array_keys(session()->get('ability'), "DELETE_PIZZA"))
                                         <tr>
                                             <td style="display: flex; justify-content: space-around">
-                                                <button class="pull-left">Update Phizza</button>
+                                                <button class="pull-left" onclick='window.location="{{url("/UpdatePhizza/".$phizza->phizza_id)}}"'>Update Phizza</button>
                                                 <button class="pull-right">Delete Phizza</button>
                                             </td>
                                         </tr>
