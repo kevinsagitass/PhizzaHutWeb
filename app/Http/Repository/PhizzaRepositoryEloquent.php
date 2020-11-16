@@ -104,6 +104,33 @@ class PhizzaRepositoryEloquent
         }
     }
 
+    public function getPhizzaDetail($phizza_id)
+    {
+        try {
+            $phizza = Phizza::query()
+            ->where('phizza_id', '=', $phizza_id)
+            ->first();
+
+        } catch (Exception $e) {
+            throw $e;
+        }
+
+        return $phizza;
+    }
+
+    public function deletePhizza($phizza_id)
+    {
+        try {
+            $phizza = Phizza::query()->where('phizza_id', '=', $phizza_id);
+
+            $phizza->delete();
+        } catch (Exception $e) {
+            throw $e;
+        }
+
+        return null;
+    }
+
 }
 
 ?>

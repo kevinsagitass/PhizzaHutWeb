@@ -28,11 +28,12 @@ class HomeController extends Controller
             $userAbility = [];
             if ($this->user != null) {
              // get user abbilities
-             $userAbility = $this->homeRepository->getUserAbility($this->user);
-
-             $phizzas = $this->homeRepository->getPhizzas();
-             
+             $userAbility = $this->homeRepository->getUserAbility($this->user);             
+            } else {
+                session()->put('ability', []);
             }
+
+            $phizzas = $this->homeRepository->getPhizzas();
 
             return view('home')->with(['phizzas' => $phizzas]);
         } catch (Exception $e) {

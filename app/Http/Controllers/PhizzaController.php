@@ -71,4 +71,57 @@ class PhizzaController extends Controller
         }
     }
 
+    public function getPhizzaDetail($phizza_id)
+    {
+        try {
+            $phizza = $this->phizzaRepository->getPhizzaDetail($phizza_id);
+        } catch (Exception $e) {
+            throw $e;
+        }
+
+        return view('phizza_detail', ['detail' => $phizza]);
+    }
+
+    public function editPhizza($phizza_id)
+    {
+
+    }
+
+    public function deletePhizza($phizza_id)
+    {
+        try {
+            $phizza = $this->phizzaRepository->getPhizzaDetail($phizza_id);
+        } catch (Exception $e) {
+            throw $e;
+        }
+
+        return view('delete_phizza', ['phizza' => $phizza]);
+    }
+
+    public function delete($phizza_id)
+    {
+        try {
+            $this->phizzaRepository->deletePhizza($phizza_id);
+        } catch (Exception $e) {
+            throw $e;
+        }
+
+        return redirect('Home');
+    }
+
+    public function addPhizzatoCart($phizza_id, Request $request) 
+    {
+        try {
+            $param = $request->only([
+                'quantity',
+            ]);
+            $param['phizza_id'] = $phizza_id;
+            
+
+
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
 }
