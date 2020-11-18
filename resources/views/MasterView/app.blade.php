@@ -15,8 +15,7 @@
             <div class="col-md-12" id="navbar">
                 <div class="row">
                     <div class="col-md-6">
-                        <div><span></span></div>
-                        <h3>Phizza Hut</h3>
+                        <a href="{{url('/Home')}}"><h3>Phizza Hut</h3></a>
                     </div>
                     <div class="col-md-6" style="text-align: right;">
                         @if(!Auth::check())

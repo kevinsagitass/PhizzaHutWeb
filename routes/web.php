@@ -28,16 +28,15 @@ Route::post('/Login', 'LoginController@login');
 
 Route::get('/Home', 'HomeController@dashboard');
 
-Route::get('/PhizzaDetail/{phizza_id}', 'PhizzaController@getPhizzaDetail')->where('phizza_id', '[0-9]+');
+Route::any('/search', 'HomeController@searchPhizza');
 
 Route::group(['middleware' => ['auth']], function () {
-
-    Route::get('/Home', 'HomeController@dashboard');
-
     
     Route::get('/Logout', 'LoginController@logout');
 
     Route::get('/', 'HomeController@dashboard');
+
+    Route::get('/PhizzaDetail/{phizza_id}', 'PhizzaController@getPhizzaDetail')->where('phizza_id', '[0-9]+');
 
     Route::get('/AllUser', 'AdminController@viewAllUser');
 

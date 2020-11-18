@@ -116,12 +116,17 @@ class PhizzaController extends Controller
                 'quantity',
             ]);
             $param['phizza_id'] = $phizza_id;
-            
 
+            if($param['quantity'] <= 0 ) {
+
+            }
+
+            if($this->phizzaRepository->addPhizzatoCart($param) == 'success') {
+                return redirect('Home');
+            }
 
         } catch (Exception $e) {
             throw $e;
         }
     }
-
 }

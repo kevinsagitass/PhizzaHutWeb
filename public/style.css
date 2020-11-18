@@ -1,0 +1,9 @@
+#navbar {
+    background-color: red;
+    color: white;
+}
+
+#navbar a {
+    color: white;
+    text-decoration: none;
+}

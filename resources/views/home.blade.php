@@ -9,11 +9,25 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="ml-3">Our Freshly Made Pizza</h2>
+                    <hr>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <h3 class="ml-3">Order it Now</h3>
+                </div>
+                <div class="col-md-6">
+                    <form style="padding-bottom: 10px" action="/search" method="POST" role="search">
+                        {{ csrf_field() }}
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q"
+                                placeholder="Search Phizza"> <span class="input-group-btn">
+                                <button id="btnSearch" style="background-color: lightgrey" type="submit" class="btn btn-default">
+                                    Search
+                                </button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
             </div>
             @if(array_keys(session()->get('ability'), "ADD_PIZZA")) 

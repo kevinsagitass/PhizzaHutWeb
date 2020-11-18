@@ -3,6 +3,8 @@
 namespace App\Http\Repository;
 
 use App\Models\Phizza;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -50,7 +52,6 @@ class PhizzaRepositoryEloquent
             if($result == 'success')
             {
                 $phizza = $this->getPhizza($data['idPhizza']);
-//                dd($phizza);
                 $phizza->phizza_id =  $data['idPhizza'];
                 $phizza->phizza_name = $data['phizza_name'];
                 $phizza->desc = $data['desc'];
@@ -129,6 +130,41 @@ class PhizzaRepositoryEloquent
         }
 
         return null;
+    }
+
+    public function addPhizzatoCart($param)
+    {
+        try {
+            $user = Auth::user();
+
+            if(!$user) {
+                return 'Please Log in First!';
+            }
+
+            $userCart = Cart::query()
+            ->where('user_id', '=', $user['user_id'])
+            ->where('phizza_id', '=', $param['phizza_id'])
+            ->first();
+
+            if($userCart != null) {
+                $cart = Cart::query()->where('item_id', '=', $userCart->item_id)->first();
+
+                $cart->quantity = $cart->quantity + $param['quantity'];
+            } else {
+                $cart = new Cart();
+
+                $cart->phizza_id = $param['phizza_id'];
+                $cart->user_id = $user['user_id'];
+                $cart->quantity = $param['quantity'];                
+            }
+
+            $cart->save();
+
+        } catch (Exception $e) {
+            throw $e;
+        }
+
+        return 'success';
     }
 
 }
