@@ -138,7 +138,7 @@ class PhizzaRepositoryEloquent
             $user = Auth::user();
 
             if(!$user) {
-                return 'Please Log in First!';
+                return ['err' => 'Please Log in First!'];
             }
 
             $userCart = Cart::query()

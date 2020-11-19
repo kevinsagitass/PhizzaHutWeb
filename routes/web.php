@@ -30,15 +30,17 @@ Route::get('/Home', 'HomeController@dashboard');
 
 Route::any('/search', 'HomeController@searchPhizza');
 
+Route::get('/', 'HomeController@dashboard');
+
+Route::get('/PhizzaDetail/{phizza_id}', 'PhizzaController@getPhizzaDetail')->where('phizza_id', '[0-9]+');
+
 Route::group(['middleware' => ['auth']], function () {
     
     Route::get('/Logout', 'LoginController@logout');
 
-    Route::get('/', 'HomeController@dashboard');
-
-    Route::get('/PhizzaDetail/{phizza_id}', 'PhizzaController@getPhizzaDetail')->where('phizza_id', '[0-9]+');
-
     Route::get('/AllUser', 'AdminController@viewAllUser');
+
+    // Phizza
 
     Route::post('/AddPhizzaToCart/{phizza_id}', 'PhizzaController@addPhizzatoCart')->where('phizza_id', '[0-9]+');
 
@@ -55,4 +57,20 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/DeletePhizza/{phizza_id}', 'PhizzaController@deletePhizza')->where('phizza_id', '[0-9]+');
 
     Route::post('/DeletePhizza/{phizza_id}', 'PhizzaController@delete')->where('phizza_id', '[0-9]+');
+
+    // Cart
+
+    Route::get('/UserCart', 'TransactionController@viewCart');
+
+    Route::post('/UpdateCartItem/{item_id}', 'TransactionController@updateCartItemQuantity')->where('item_id', '[0-9]+');
+
+    Route::post('/DeleteCartItem/{item_id}', 'TransactionController@deleteCartItem')->where('item_id', '[0-9]+');
+
+    Route::post('/Checkout/{user_id}', 'TransactionController@CheckoutCart')->where('user_id', '[0-9]+');
+
+    // Transaction
+
+    Route::get('/UserTransaction', 'TransactionController@viewUserTransaction');
+
+    Route::get('/UserTransactionDetail/{transaction_id}', 'TransactionController@viewTransactionDetail')->where('transaction_id', '[0-9]+');
 });

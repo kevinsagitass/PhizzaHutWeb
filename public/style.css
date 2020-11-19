@@ -1,9 +1,18 @@
 #navbar {
     background-color: red;
     color: white;
+    margin-bottom: 15px;
 }
 
 #navbar a {
     color: white;
     text-decoration: none;
+}
+
+#detailBox {
+    box-shadow: 5px 5px 5px black;
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    margin-bottom: 20px;
 }

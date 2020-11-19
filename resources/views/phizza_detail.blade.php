@@ -39,6 +39,10 @@
                         <button style="cursor: pointer" type="submit" class="btn btn-primary">Add to Cart</button>
                     </div>
                 </form>
+                <br>
+                @if(Session::has('err'))
+                    <span class="text-danger">{{ Session::get('err') }}</span>
+                @endif
             @endif
         </div>
    </div>

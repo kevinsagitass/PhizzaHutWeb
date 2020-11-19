@@ -29,10 +29,10 @@
                                 <span style="border-right: 1px solid white"><a style="padding: 5px" href="{{url('/AllUser')}}">View All User</a></span>
                             @endif
                             @if(array_keys(session()->get('ability'), "VIEW_TRANSACTION_HISTORY"))
-                                <span style="border-right: 1px solid white"><a style="padding: 5px" href="{{url('/AllUserTransaction')}}">View Transaction History</a></span>
+                                <span style="border-right: 1px solid white"><a style="padding: 5px" href="{{url('/UserTransaction')}}">View Transaction History</a></span>
                             @endif
                             @if(array_keys(session()->get('ability'), "VIEW_CART"))
-                                <span style="border-right: 1px solid white"><a style="padding: 5px" href="{{url('/AllUser')}}">View Cart</a></span>
+                                <span style="border-right: 1px solid white"><a style="padding: 5px" href="{{url('/UserCart')}}">View Cart</a></span>
                             @endif
                             <span><a style="padding: 5px" href="{{url('/Logout')}}">Logout</a></span>
                         @endif

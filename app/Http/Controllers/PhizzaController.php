@@ -118,10 +118,14 @@ class PhizzaController extends Controller
             $param['phizza_id'] = $phizza_id;
 
             if($param['quantity'] <= 0 ) {
-
+                return redirect()->back()->with(['err' => 'Minimum Quantity is 1'])->withInput();
             }
 
-            if($this->phizzaRepository->addPhizzatoCart($param) == 'success') {
+            $err = $this->phizzaRepository->addPhizzatoCart($param);
+
+            if($err != 'success') {
+                return redirect()->back()->with($err)->withInput();
+            } else {
                 return redirect('Home');
             }
 
