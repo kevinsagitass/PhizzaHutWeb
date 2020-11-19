@@ -24,5 +24,18 @@ class UserSeeder extends Seeder
                 'role_id' => 1
             ]
          ]);
+
+        DB::table('ms_user')->insert([
+            [
+                'username' => 'User',
+                'email' => 'user@gmail.com',
+                'pass' => Hash::make('user123'),
+                'confirm_pass' => 'user1',
+                'address' => 'user1 Address',
+                'phone_number' => '08128871926',
+                'gender' => 'Male',
+                'role_id' => 2
+            ]
+        ]);
     }
 }

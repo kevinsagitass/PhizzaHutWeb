@@ -11,4 +11,5 @@ class User
    public $user;
 
    protected $primaryKey = 'user_id';
+
 }

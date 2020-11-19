@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Repository\TransactionRepositoryEloquent;
 use App\Models\Phizza;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -19,7 +20,7 @@ class TransactionController extends Controller
     {
         try {
             $cartItem = $this->transactionRepository->getUserCart();
-        
+
             return view('show_cart')->with(['items' => $cartItem]);
         } catch (Exception $e) {
             throw $e;
@@ -98,6 +99,20 @@ class TransactionController extends Controller
 
             return view('user_transaction_detail')->with(['details' => $details]);
         } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function viewAllUserTransaction(){
+        try {
+            if(!Auth::check()){
+                return redirect('Login');
+            } else if(Auth::user()->role_id != 1){
+                return redirect('Home');
+            }
+            $allTransaction = $this->transactionRepository->getAllTransaction();
+            return view('all_user_transaction')->with(['transactions'=>$allTransaction , 'user'=> Auth::user()]);
+        }catch (Exception $e){
             throw $e;
         }
     }

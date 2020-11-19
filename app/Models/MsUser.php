@@ -15,7 +15,7 @@ class Msuser extends Authenticatable
 {
     protected $table      = "ms_user";
     protected $primaryKey = "user_id";
-    
+
     protected $fillable = array(
         'username',
         'email',
@@ -30,6 +30,10 @@ class Msuser extends Authenticatable
     public function getAuthPassword()
     {
       return $this->pass;
+    }
+
+    public function transactions(){
+        return $this->hasMany('App\Models\Transaction', 'user_id');
     }
 }
 

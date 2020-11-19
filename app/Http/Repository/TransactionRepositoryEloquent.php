@@ -17,7 +17,7 @@ use Carbon\Carbon;
  */
 class TransactionRepositoryEloquent
 {
-    public function getUserCart() 
+    public function getUserCart()
     {
         try {
             $user = Auth::User();
@@ -102,7 +102,7 @@ class TransactionRepositoryEloquent
             $transaction->payment_ammount = $totalPayment;
             $transaction->transaction_date = Carbon::now();
             $transaction->user_id = $user_id;
-            
+
             $transaction->save();
 
             // Insert Detail & Delete Cart Item
@@ -124,7 +124,7 @@ class TransactionRepositoryEloquent
         return 'success';
     }
 
-    public function getUserTransaction() 
+    public function getUserTransaction()
     {
         try {
             $user = Auth::User();
@@ -153,6 +153,15 @@ class TransactionRepositoryEloquent
         }
 
         return $details;
+    }
+
+    public function getAllTransaction(){
+        try {
+            $transactions = Transaction::all();
+        }catch (Exception $e){
+            throw $e;
+        }
+        return $transactions;
     }
 }
 

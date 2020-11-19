@@ -35,7 +35,7 @@ Route::get('/', 'HomeController@dashboard');
 Route::get('/PhizzaDetail/{phizza_id}', 'PhizzaController@getPhizzaDetail')->where('phizza_id', '[0-9]+');
 
 Route::group(['middleware' => ['auth']], function () {
-    
+
     Route::get('/Logout', 'LoginController@logout');
 
     Route::get('/AllUser', 'AdminController@viewAllUser');
@@ -73,4 +73,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/UserTransaction', 'TransactionController@viewUserTransaction');
 
     Route::get('/UserTransactionDetail/{transaction_id}', 'TransactionController@viewTransactionDetail')->where('transaction_id', '[0-9]+');
+    Route::get('/AllUserTransaction', 'TransactionController@viewAllUserTransaction');
+
 });

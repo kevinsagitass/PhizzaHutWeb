@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <img style="width: 300px !important" src="{{asset('storage/PhizzaPicture/'.$phizza->image)}}" alt="{{$phizza->image}}">
             </div>
             <div class="col-md-8">
