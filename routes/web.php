@@ -49,10 +49,9 @@ Route::group(['middleware' => ['auth']], function () {
         return view('addphizza');
     }, 'as' => 'add.phizza.form'])->name('addPhizzaForm');
 
-    Route::get('/UpdatePhizza/{phizza_id}','PhizzaController@viewupdate');
-    Route::post('/UpdatePhizza/{phizza_id}', 'PhizzaController@update');
 
-    Route::get('/EditPhizza/{phizza_id}', 'PhizzaController@editPhizza')->where('phizza_id', '[0-9]+');
+    Route::get('/EditPhizza/{phizza}', 'PhizzaController@editPhizza')->name('editphizza')->where('phizza_id', '[0-9]+');
+    Route::post('/EditPhizza/{phizza_id}', 'PhizzaController@update')->where('phizza_id', '[0-9]+');
 
     Route::get('/DeletePhizza/{phizza_id}', 'PhizzaController@deletePhizza')->where('phizza_id', '[0-9]+');
 
