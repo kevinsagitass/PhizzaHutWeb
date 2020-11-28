@@ -23,7 +23,7 @@ class PhizzaController extends Controller
             'phizza_name' => 'required|max:20',
             'price' => 'required|numeric|min:10000',
             'desc' => 'required|min:20',
-            'image' => 'required|image'
+            'image' => 'image'
         ]);
         return $validator;
 
@@ -61,11 +61,12 @@ class PhizzaController extends Controller
             }
             $oldImage = $oldPhizza->image;
             $response = $this->phizzaRepository->update($data);
-
-            $image = $request->file('image');
-            $new_name = $response['new_name'];
-            $image->move(public_path() . '\storage\PhizzaPicture', $new_name);
-            unlink(public_path() . "\storage\PhizzaPicture\\$oldImage");
+            if($request->file('image') != null) {
+                $image = $request->file('image');
+                $new_name = $response['new_name'];
+                $image->move(public_path() . '\storage\PhizzaPicture', $new_name);
+                unlink(public_path() . "\storage\PhizzaPicture\\$oldImage");
+            }
             return redirect('Home');
         } catch (Exception $e) {
             throw e;

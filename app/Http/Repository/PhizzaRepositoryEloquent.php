@@ -49,7 +49,9 @@ class PhizzaRepositoryEloquent
                 $phizza->phizza_name = $data['phizza_name'];
                 $phizza->desc = $data['desc'];
                 $phizza->price = $data['price'];
-                $phizza->image = rand() . '.' . $data['image']->getClientOriginalExtension();
+                if(isset($data['image'])) {
+                    $phizza->image = rand() . '.' . $data['image']->getClientOriginalExtension();
+                }
                 $new_name = $phizza->image;
                 $phizza->save();
 

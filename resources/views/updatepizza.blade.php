@@ -42,7 +42,7 @@
                     <div class="form-group row">
                         <label for="image" class="col-sm-2 col-form-label">Pizza Image:</label>
                         <div class="col-sm-7">
-                            <input type="file" class="form-control" id="image" name="image">
+                            <input type="file" class="form-control" id="image" name="image" value="{{$phizza->image}}">
                             @error('image')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

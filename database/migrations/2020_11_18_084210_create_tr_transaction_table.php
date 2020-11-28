@@ -18,7 +18,7 @@ class CreateTrTransactionTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->dateTime('transaction_date')->nullable(false);
             $table->integer('payment_ammount')->unsigned()->nullable(false);
-            $table->foreign('user_id')->references('user_id')->on('ms_user');
+            $table->foreign('user_id')->references('user_id')->on('ms_user')->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -18,8 +18,8 @@ class CreateCartTable extends Migration
             $table->integer('quantity');
             $table->integer('user_id')->unsigned();
             $table->integer('phizza_id')->unsigned();
-            $table->foreign('user_id')->references('user_id')->on('ms_user');
-            $table->foreign('phizza_id')->references('phizza_id')->on('phizza');
+            $table->foreign('user_id')->references('user_id')->on('ms_user')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('phizza_id')->references('phizza_id')->on('phizza')->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

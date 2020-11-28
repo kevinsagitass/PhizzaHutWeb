@@ -18,8 +18,8 @@ class CreateTrTransactionDetailTable extends Migration
             $table->integer('transaction_id')->unsigned();
             $table->integer('phizza_id')->unsigned();
             $table->integer('quantity')->unsigned()->nullable(false);
-            $table->foreign('transaction_id')->references('transaction_id')->on('tr_transaction');
-            $table->foreign('phizza_id')->references('phizza_id')->on('phizza');
+            $table->foreign('transaction_id')->references('transaction_id')->on('tr_transaction')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('phizza_id')->references('phizza_id')->on('phizza')->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
