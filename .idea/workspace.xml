@@ -24,11 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aef45de2-5db9-4810-b5e9-268253a78958" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PhizzaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PhizzaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Repository/PhizzaRepositoryEloquent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Repository/PhizzaRepositoryEloquent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/addphizza.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/addphizza.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/updatepizza.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/updatepizza.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +161,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Wegodev/Laravel 7/wegodev-tix" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -209,6 +204,7 @@
       <workItem from="1605795271387" duration="835000" />
       <workItem from="1605844415241" duration="26000" />
       <workItem from="1606188321679" duration="6946000" />
+      <workItem from="1606568819682" duration="1681000" />
     </task>
     <servers />
   </component>
@@ -240,9 +236,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="478" y="31" width="579" height="801" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1603632823967" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1606194708346">
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1606569804609">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1606194708346" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1606569804609" />
   </component>
 </project>
