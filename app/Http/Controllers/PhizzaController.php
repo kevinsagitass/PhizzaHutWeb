@@ -32,6 +32,11 @@ class PhizzaController extends Controller
     public function add(Request $request)
     {
         try {
+            dd(Auth::User());
+            if(Auth::User()) {
+
+            }
+
             $data = $request->all();
             $validator = $this->validatePhizza($data);
             if ($validator->fails()) {
@@ -86,6 +91,9 @@ class PhizzaController extends Controller
 
     public function editPhizza(Phizza $phizza)
     {
+        if(Auth::User()->role_id != 1) {
+            abort(403);
+        }
         return view('updatepizza', [
             'phizza' => $phizza,
             'user' => Auth::user()
@@ -95,6 +103,10 @@ class PhizzaController extends Controller
     public function deletePhizza($phizza_id)
     {
         try {
+            if(Auth::User()->role_id != 1) {
+                abort(403);
+            }
+
             $phizza = $this->phizzaRepository->getPhizzaDetail($phizza_id);
         } catch (Exception $e) {
             throw $e;

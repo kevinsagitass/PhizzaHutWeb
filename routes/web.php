@@ -46,6 +46,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/AddPhizza','PhizzaController@add');
     Route::get('/AddPhizza',[function(){
+        if(Auth::User()->role_id != 1) {
+            abort(403);
+        }
         return view('addphizza');
     }, 'as' => 'add.phizza.form'])->name('addPhizzaForm');
 

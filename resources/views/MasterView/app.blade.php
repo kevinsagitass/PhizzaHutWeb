@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-md-6" style="text-align: right;">
                         @if(!Auth::check())
-                            <span style="border-right: 1px solid white"><a style="padding: 5px" href="Login">Login</a></span>
+                            <span style="border-right: 1px solid white"><a style="padding: 5px" href="{{url('/Login')}}">Login</a></span>
                             <a style="padding: 5px" href="Register">Register</a>
                         @elseif(Auth::check() && Auth::user() != null)
                             @if(array_keys(session()->get('ability'), "VIEW_ALL_USER_TRANSACTION"))

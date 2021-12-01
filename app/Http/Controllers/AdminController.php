@@ -21,7 +21,7 @@ class AdminController extends Controller
             if(!Auth::check()) {
                 return redirect('Login');
             } else if (Auth::user()->role_id != 1) {
-                return redirect('Home');
+                abort(403);
             }
 
             $allUser = $this->adminRepository->getAllUser();

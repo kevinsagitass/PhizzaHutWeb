@@ -19,6 +19,9 @@ class TransactionController extends Controller
     public function viewCart()
     {
         try {
+            if(Auth::User()->role_id != 2) {
+                abort(403);
+            }
             $cartItem = $this->transactionRepository->getUserCart();
 
             return view('show_cart')->with(['items' => $cartItem]);
@@ -30,6 +33,9 @@ class TransactionController extends Controller
     public function updateCartItemQuantity($item_id, Request $request)
     {
         try {
+            if(Auth::User()->role_id != 2) {
+                abort(403);
+            }
             $param = $request->only([
                 'quantity',
             ]);
@@ -54,6 +60,9 @@ class TransactionController extends Controller
     public function deleteCartItem($item_id)
     {
         try {
+            if(Auth::User()->role_id != 2) {
+                abort(403);
+            }
             $err = $this->transactionRepository->deleteCartItem($item_id);
 
             if($err != 'success') {
@@ -69,6 +78,9 @@ class TransactionController extends Controller
     public function CheckoutCart($user_id)
     {
         try {
+            if(Auth::User()->role_id != 2) {
+                abort(403);
+            }
             $err = $this->transactionRepository->checkoutCart($user_id);
 
             if($err != 'success') {
@@ -84,6 +96,9 @@ class TransactionController extends Controller
     public function viewUserTransaction()
     {
         try {
+            if(Auth::User()->role_id != 2) {
+                abort(403);
+            }
             $transactions = $this->transactionRepository->getUserTransaction();
 
             return view('user_transaction')->with(['transactions' => $transactions]);
@@ -108,7 +123,7 @@ class TransactionController extends Controller
             if(!Auth::check()){
                 return redirect('Login');
             } else if(Auth::user()->role_id != 1){
-                return redirect('Home');
+                abort(403);
             }
             $allTransaction = $this->transactionRepository->getAllTransaction();
             return view('all_user_transaction')->with(['transactions'=>$allTransaction , 'user'=> Auth::user()]);
